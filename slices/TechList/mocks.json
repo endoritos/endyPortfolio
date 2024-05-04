@@ -1,0 +1,36 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "sky",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"tech_name",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "explain",
+							"type": "Text"
+						}
+					],
+					[
+						"tech_color",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "#b8b040",
+							"type": "Color"
+						}
+					]
+				]
+			}
+		]
+	}
+]
