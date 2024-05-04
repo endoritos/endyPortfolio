@@ -1,0 +1,24 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"last_name": {
+				"__TYPE__": "FieldContent",
+				"value": "rabbit",
+				"type": "Text"
+			},
+			"first_name": {
+				"__TYPE__": "FieldContent",
+				"value": "happen",
+				"type": "Text"
+			},
+			"tag_line": {
+				"__TYPE__": "FieldContent",
+				"value": "language",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
