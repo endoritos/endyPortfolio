@@ -2,6 +2,7 @@ import Bounded from "@/app/components/Bounded";
 import Heading from "@/app/components/Heading";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import ContentList from "./ContentList";
 
 /**
  * Props for `Projects`.
@@ -26,7 +27,9 @@ const Projects = ({ slice }: ProjectsProps): JSX.Element => {
         <PrismicRichText field={slice.primary.description}></PrismicRichText>
       </div>
     )} 
-    {/* stop at 3:10:48 */}
+
+
+    <ContentList />
     </Bounded>
   );
 };

@@ -7,4 +7,5 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   projects: dynamic(() => import("./ContectIndex")),
   tech_list: dynamic(() => import("./TechList")),
+  text_block: dynamic(() => import("./TextBlock")),
 };
