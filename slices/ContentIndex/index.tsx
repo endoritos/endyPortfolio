@@ -1,18 +1,27 @@
-import Bounded from "@/app/components/Bounded";
-import Heading from "@/app/components/Heading";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { createClient } from "@/prismicio";
 import ContentList from "./ContentList";
+import Bounded from "@/app/components/Bounded";
+import Heading from "@/app/components/Heading";
+/**
+ * Props for `BlogPostIndex`.
+ */
+export type BlogPostIndexProps =
+  SliceComponentProps<Content.BlogPostIndexSlice>;
 
 /**
- * Props for `Projects`.
+ * Component for "BlogPostIndex" Slices.
  */
-export type ProjectsProps = SliceComponentProps<Content.ProjectsSlice>;
+const BlogPostIndex = async ({
+  slice,
+}: BlogPostIndexProps): Promise<JSX.Element> => {
+  const client = createClient();
+  const blogPosts = await client.getAllByType("blog_post");
+  const projects = await client.getAllByType("projects");
 
-/**
- * Component for "Projects" Slices.
- */
-const Projects = ({ slice }: ProjectsProps): JSX.Element => {
+  const items = slice.primary.content_type === "Blogs" ? blogPosts : projects;
+
   return (
     <Bounded
       data-slice-type={slice.slice_type}
@@ -21,17 +30,19 @@ const Projects = ({ slice }: ProjectsProps): JSX.Element => {
       <Heading size="xl" className="mb-8">
         {slice.primary.heading}
       </Heading>
-
-    {isFilled.richText(slice.primary.description)&&(
-      <div className="prose prose-xl prose-invert mb-10">
-        <PrismicRichText field={slice.primary.description}></PrismicRichText>
-      </div>
-    )} 
-
-
-    <ContentList />
+      {isFilled.richText(slice.primary.description) && (
+        <div className="prose prose-xl prose-invert mb-10">
+          <PrismicRichText field={slice.primary.description} />
+        </div>
+      )}
+      <ContentList
+        items={items}
+        contentType={slice.primary.content_type}
+        viewMoreText={slice.primary.view_more_text}
+        fallbackItemImage={slice.primary.fallback_item_image}
+      />
     </Bounded>
   );
 };
 
-export default Projects;
+export default BlogPostIndex;
