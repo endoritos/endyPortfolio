@@ -1,0 +1,58 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "belt",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "control",
+							"type": "Text"
+						}
+					],
+					[
+						"time_pirode",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "subject",
+							"type": "Text"
+						}
+					],
+					[
+						"instituition",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "thou",
+							"type": "Text"
+						}
+					],
+					[
+						"description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Magna sint qui aute. Magna ullamco consectetur laborum. Do esse nostrud non amet mollit reprehenderit consequat qui incididunt esse eu."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
+	}
+]
