@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import clsx from "clsx";
 import { PrismicPreview } from "@prismicio/next";
 import { createClient, repositoryName } from "@/prismicio";
+import { Analytics } from "@vercel/analytics/react"
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
