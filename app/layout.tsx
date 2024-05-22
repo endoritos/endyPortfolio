@@ -13,6 +13,7 @@ const urbanist = Urbanist({ subsets: ["latin"] });
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
   const settings = await client.getSingle("settings");
+  <Analytics/>
 
   return {
     title: settings.data.meta_title,
