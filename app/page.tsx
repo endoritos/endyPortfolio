@@ -3,12 +3,10 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { Analytics } from "@vercel/analytics/react"
 
 export default async function Page() {
   const client = createClient();
   const page = await client.getSingle("homepage");
-  <Analytics/>
   return <SliceZone slices={page.data.slices} components={components} />;
   
 }
