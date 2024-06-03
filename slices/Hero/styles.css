@@ -4,21 +4,11 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#root,
-.container {
-  
-}
 
 body {
   
   color: white;
   font-family: 'Inter';
-}
-
-a {
- 
 }
 
 a {
