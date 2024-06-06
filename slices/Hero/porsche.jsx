@@ -18,7 +18,6 @@ export default function Porsches() {
       {/** PerfMon will detect performance issues */}
       <PerformanceMonitor onDecline={() => degrade(true)} />
             {/* Renders contents "live" into a HDRI environment (scene.environment). */}
-
       <Environment frames={degraded ? 1 : Infinity} resolution={500} background blur={1}>
         <Lightformers />
       </Environment>
@@ -49,17 +48,22 @@ function Porsche(props) {
 function CameraRig({ v = new THREE.Vector3() }) {
   return useFrame((state) => {
     const t = state.clock.elapsedTime;
-    state.camera.position.lerp(v.set(Math.sin(t / 2) * 5, 0, 5 + Math.cos(t / 2) * 5), 0.05);
+    const radius = 6; // Distance from the car
+    const x = Math.sin(t / 2) * radius;
+    const z = Math.cos(t / 2) * radius;
+    const y = Math.sin(t / 4) * 1; // Slight vertical movement
+    state.camera.position.lerp(v.set(x, y, z), 0.05);
     state.camera.lookAt(0, 0, 0);
   });
 }
+
 
 function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
   const group = useRef();
   useFrame((state, delta) => (group.current.position.z += delta * 10) > 20 && (group.current.position.z = -60));
   return (
     <>
-     {/* Ceiling */}
+      {/* Ceiling */}
       <Lightformer intensity={0.75} rotation-x={Math.PI / 2} position={[0, 5, -9]} scale={[10, 10, 1]} />
       <group rotation={[0, 0.5, 0]}>
         <group ref={group}>
@@ -68,12 +72,11 @@ function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
           ))}
         </group>
       </group>
-            {/* Sides */}
+      {/* Sides */}
       <Lightformer intensity={4} rotation-y={Math.PI / 2} position={[-5, 1, -1]} scale={[20, 0.1, 1]} />
       <Lightformer rotation-y={Math.PI / 2} position={[-5, -1, -1]} scale={[20, 0.5, 1]} />
       <Lightformer rotation-y={-Math.PI / 2} position={[10, 1, 0]} scale={[20, 1, 1]} />
-            {/* Background */}
-
+      {/* Background */}
       <mesh scale={100}>
         <sphereGeometry args={[1, 64, 64]} />
         <LayerMaterial side={THREE.BackSide}>
