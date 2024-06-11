@@ -8,8 +8,9 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    // Revalidate the entire site
-    await res.revalidate('/');
+    // Trigger revalidation
+    const revalidateUrl = new URL('*', req.url);
+    await fetch(revalidateUrl.toString(), { method: 'POST' });
     return NextResponse.json({ message: 'Cache cleared' });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to revalidate' }, { status: 500 });
