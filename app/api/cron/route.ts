@@ -1,19 +1,17 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
-  }
-
-  if (req.headers.authorization !== `Bearer ${process.env.CLIENT_KEY}`) {
-    return res.status(401).json({ error: 'Unauthorized' });
+export async function POST(req: NextRequest) {
+  const authorization = req.headers.get('authorization');
+  
+  if (authorization !== `Bearer ${process.env.CLIENT_KEY}`) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   try {
     // Revalidate the entire site
     await res.revalidate('/');
-    return res.status(200).json({ message: 'Cache cleared' });
+    return NextResponse.json({ message: 'Cache cleared' });
   } catch (error) {
-    return res.status(500).json({ error: 'Failed to revalidate' });
+    return NextResponse.json({ error: 'Failed to revalidate' }, { status: 500 });
   }
 }
