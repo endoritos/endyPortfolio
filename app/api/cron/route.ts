@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
+export async function GET() {
+  return NextResponse.json({ message: 'GET requests are not allowed' }, { status: 405 });
+}
+
 export async function POST(req: NextRequest) {
   const authorization = req.headers.get('authorization');
 
