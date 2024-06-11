@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'edge';
+
 export async function POST(req: NextRequest) {
   const authorization = req.headers.get('authorization');
 
@@ -15,7 +17,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Failed to revalidate' }, { status: 500 });
   }
 }
-
-export const config = {
-  runtime: 'edge',
-};
