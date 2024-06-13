@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Extra steps after deployment
+
+If you encounter an issue where you make a change on Prismic and can see the change on the Prismic preview but not on your deployed website (this may not occur when running on localhost), this problem arises due to how caching is handled.
+
+To fix this, you need to set up webhooks and a cURL API to clear the cache when a change is made. This ensures that new information is loaded when you update something on your external website or Prismic.
+
+You can find the source code to do this here: [GitHub Source Code](https://github.com/endoritos/endyPortfolio/blob/master/app/api/cron/route.ts).
+
+Here is an example of how you should set up your webhook: [Webhook Setup Example](https://documenter.getpostman.com/view/2sA3XPD2vF?version=latest#intro).
