@@ -94,9 +94,15 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           <span className="block text-slate-300">
             {renderLetters(slice.primary.first_name, "first")}
           </span>
+          
           <span className="-mt-[.2em] block text-slate-500">
             {renderLetters(slice.primary.last_name, "last")}
           </span>
+          
+          <div className="sticky bottom-4">
+          <Porsches/>
+        </div>
+
           <span
             className="dev-title block bg-gradient-to-tr from-yellow-500 via-red-200 to-yellow-500 bg-clip-text text-2xl font-blod
           uppercase tracking-[.2em] text-transparent opacity-0 md:text-4-xl"
@@ -104,9 +110,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             {slice.primary.tag_line}
           </span>
         </h1>
-        <div className="bottom-0 z-50 mx-auto max-w-7xl md:sticky md:bottom-4">
-          <Porsches/>
-        </div>
+        
       </div>
     </Bounded>
   );

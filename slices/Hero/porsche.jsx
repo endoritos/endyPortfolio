@@ -77,11 +77,11 @@ function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
       <Lightformer rotation-y={Math.PI / 2} position={[-5, -1, -1]} scale={[20, 0.5, 1]} />
       <Lightformer rotation-y={-Math.PI / 2} position={[10, 1, 0]} scale={[20, 1, 1]} />
       {/* Background */}
-      <mesh scale={100}>
-        <sphereGeometry args={[1, 64, 64]} />
+      <mesh scale={50}>
+        
         <LayerMaterial side={THREE.BackSide}>
           <Color color="#444" alpha={1} mode="normal" />
-          <Depth colorA="blue" colorB="purple" alpha={0.5} mode="normal" near={0} far={300} origin={[100, 100, 100]} />
+          <Depth colorA="rgb(15, 23, 42)" colorB="rgb(15, 23, 42)"  />
         </LayerMaterial>
       </mesh>
     </>
