@@ -628,61 +628,6 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
- * Primary content in *Porjects → Items*
- */
-export interface PorjectsSliceDefaultItem {
-  /**
-   * title field in *Porjects → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: porjects.items[].title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * LinkdinWeblink field in *Porjects → Items*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: porjects.items[].linkdinweblink
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  linkdinweblink: prismic.LinkField;
-}
-
-/**
- * Default variation for Porjects Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type PorjectsSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Record<string, never>,
-  Simplify<PorjectsSliceDefaultItem>
->;
-
-/**
- * Slice variation for *Porjects*
- */
-type PorjectsSliceVariation = PorjectsSliceDefault;
-
-/**
- * Porjects Shared Slice
- *
- * - **API ID**: `porjects`
- * - **Description**: Porjects
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type PorjectsSlice = prismic.SharedSlice<
-  "porjects",
-  PorjectsSliceVariation
->;
-
-/**
  * Primary content in *TechList → Primary*
  */
 export interface TechListSliceDefaultPrimary {
@@ -782,76 +727,6 @@ export type TextBlockSlice = prismic.SharedSlice<
   TextBlockSliceVariation
 >;
 
-/**
- * Primary content in *Workpickker → Primary*
- */
-export interface WorkpickkerSliceDefaultPrimary {
-  /**
-   * Work Pickker field in *Workpickker → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: workpickker.primary.work_pickker
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  work_pickker: prismic.RichTextField;
-}
-
-/**
- * Primary content in *Workpickker → Items*
- */
-export interface WorkpickkerSliceDefaultItem {
-  /**
-   * ProjectName field in *Workpickker → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: workpickker.items[].projectname
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  projectname: prismic.KeyTextField;
-
-  /**
-   * Linkpicture field in *Workpickker → Items*
-   *
-   * - **Field Type**: Embed
-   * - **Placeholder**: *None*
-   * - **API ID Path**: workpickker.items[].linkpicture
-   * - **Documentation**: https://prismic.io/docs/field#embed
-   */
-  linkpicture: prismic.EmbedField;
-}
-
-/**
- * Default variation for Workpickker Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type WorkpickkerSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<WorkpickkerSliceDefaultPrimary>,
-  Simplify<WorkpickkerSliceDefaultItem>
->;
-
-/**
- * Slice variation for *Workpickker*
- */
-type WorkpickkerSliceVariation = WorkpickkerSliceDefault;
-
-/**
- * Workpickker Shared Slice
- *
- * - **API ID**: `workpickker`
- * - **Description**: Workpickker
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type WorkpickkerSlice = prismic.SharedSlice<
-  "workpickker",
-  WorkpickkerSliceVariation
->;
-
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -890,10 +765,6 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
-      PorjectsSlice,
-      PorjectsSliceDefaultItem,
-      PorjectsSliceVariation,
-      PorjectsSliceDefault,
       TechListSlice,
       TechListSliceDefaultPrimary,
       TechListSliceDefaultItem,
@@ -902,11 +773,6 @@ declare module "@prismicio/client" {
       TextBlockSlice,
       TextBlockSliceVariation,
       TextBlockSliceDefault,
-      WorkpickkerSlice,
-      WorkpickkerSliceDefaultPrimary,
-      WorkpickkerSliceDefaultItem,
-      WorkpickkerSliceVariation,
-      WorkpickkerSliceDefault,
     };
   }
 }
