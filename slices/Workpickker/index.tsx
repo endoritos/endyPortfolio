@@ -1,42 +1,24 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { SliceZone } from "@prismicio/react";
+import { Content } from "@prismicio/client";
+import { SliceComponentProps } from "@prismicio/react";
 
-import { createClient } from "@/prismicio";
-import { components } from "@/slices";
+/**
+ * Props for `Workpickker`.
+ */
+export type WorkpickkerProps = SliceComponentProps<Content.WorkpickkerSlice>;
 
-type Params = { uid: string };
+/**
+ * Component for "Workpickker" Slices.
+ */
+const Workpickker = ({ slice }: WorkpickkerProps): JSX.Element => {
+  return (
+    <section
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+    >
+      Placeholder component for workpickker (variation: {slice.variation})
+      Slices
+    </section>
+  );
+};
 
-export default async function Page({ params }: { params: Params }) {
-  const client = createClient();
-  const page = await client
-    .getByUID("work", params.uid)
-    .catch(() => notFound());
-
-  return <SliceZone slices={page.data.slices} components={components} />;
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
-  const client = createClient();
-  const page = await client
-    .getByUID("work", params.uid)
-    .catch(() => notFound());
-
-  return {
-    title: page.data.meta_title,
-    description: page.data.meta_description,
-  };
-}
-
-export async function generateStaticParams() {
-  const client = createClient();
-  const pages = await client.getAllByType("work");
-
-  return pages.map((page) => {
-    return { uid: page.uid };
-  });
-}
+export default Workpickker;
