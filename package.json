@@ -30,7 +30,7 @@
     "three": "^0.163.0"
   },
   "devDependencies": {
-    "@slicemachine/adapter-next": "^0.3.38",
+    "@slicemachine/adapter-next": "^0.3.43",
     "@tailwindcss/typography": "^0.5.12",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -41,7 +41,7 @@
     "postcss": "^8",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
-    "slice-machine-ui": "^1.26.0",
+    "slice-machine-ui": "^2.3.0",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
