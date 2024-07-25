@@ -1,9 +1,6 @@
 {
   "format": "page",
-  "id": "page",
-  "label": "Page",
-  "repeatable": true,
-  "status": true,
+  "id": "project_view",
   "json": {
     "Main": {
       "uid": {
@@ -13,24 +10,11 @@
         "type": "UID"
       },
       "slices": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
         "config": {
-          "choices": {
-            "content_index": {
-              "type": "SharedSlice"
-            },
-            "expirience": {
-              "type": "SharedSlice"
-            },
-            "tech_list": {
-              "type": "SharedSlice"
-            },
-            "biography": {
-              "type": "SharedSlice"
-            }
-          }
-        }
+          "choices": {}
+        },
+        "fieldset": "Slice Zone",
+        "type": "Slices"
       }
     },
     "SEO & Metadata": {
@@ -60,5 +44,8 @@
         "type": "Image"
       }
     }
-  }
+  },
+  "label": "Project view",
+  "repeatable": true,
+  "status": true
 }

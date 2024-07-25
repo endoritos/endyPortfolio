@@ -1,7 +1,7 @@
 {
   "id": "content_index",
   "type": "SharedSlice",
-  "name": "ContentIndex",
+  "name": "ProjectsWorked",
   "description": "ContentIndex",
   "variations": [
     {
@@ -24,10 +24,7 @@
           "config": {
             "label": "content Type",
             "placeholder": "",
-            "options": [
-              "Blog",
-              "Project"
-            ]
+            "options": ["Blog", "Project"]
           }
         },
         "description": {
