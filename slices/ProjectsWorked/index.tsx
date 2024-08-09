@@ -88,8 +88,7 @@ const ContentIndex = async ({ slice }: ContentIndexProps):  Promise<JSX.Element>
         items={items} 
         contentType={contentType} 
         viewMoreText={slice.primary.view_more_text} 
-        fallbackItemImage={slice.primary.fall_back_item_image} 
-      />
+        fallbackItemImage={slice.primary.fall_back_item_image}       />
     </Bounded>
   );
 };

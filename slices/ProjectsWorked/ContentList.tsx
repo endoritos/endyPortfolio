@@ -70,6 +70,7 @@ export default function ContentList({
       // Calculate speed and direction
       const speed = Math.sqrt(Math.pow(mousePos.x - lastMousePos.current.x, 2));
 
+      //calling images ahead of time 
       let ctx = gsap.context(() => {
         // Animate the image holder
         if (currentItem !== null) {
@@ -85,7 +86,7 @@ export default function ContentList({
           });
           gsap.to(revealRef.current, {
             opacity: hovering ? 1 : 0,
-            visibility: "visible",
+            visibility: "visible", 
             ease: "power3.out",
             duration: 0.4,
           });

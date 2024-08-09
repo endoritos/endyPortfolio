@@ -543,6 +543,16 @@ export interface ContentIndexSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   fall_back_item_image: prismic.ImageField<never>;
+
+  /**
+   * PageLink field in *ProjectsWorked → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_index.default.primary.pagelink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  pagelink: prismic.LinkField;
 }
 
 /**

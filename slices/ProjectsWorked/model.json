@@ -24,7 +24,10 @@
           "config": {
             "label": "content Type",
             "placeholder": "",
-            "options": ["Blog", "Project"]
+            "options": [
+              "Blog",
+              "Project"
+            ]
           }
         },
         "description": {
@@ -49,6 +52,14 @@
             "label": "Fall back item image",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "pagelink": {
+          "type": "Link",
+          "config": {
+            "label": "PageLink",
+            "placeholder": "",
+            "select": null
           }
         }
       },
