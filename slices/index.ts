@@ -7,6 +7,7 @@ export const components = {
   content_index: dynamic(() => import("./ProjectsWorked")),
   expirience: dynamic(() => import("./Expirience")),
   hero: dynamic(() => import("./Hero")),
+  image_block: dynamic(() => import("./ImageBlock")),
   proprro: dynamic(() => import("./Proprro")),
   tech_list: dynamic(() => import("./TechList")),
   text_block: dynamic(() => import("./TextBlock")),
