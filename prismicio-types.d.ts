@@ -4,6 +4,67 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type FormsDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Forms documents
+ */
+interface FormsDocumentData {
+  /**
+   * Slice Zone field in *Forms*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: forms.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<FormsDocumentDataSlicesSlice> /**
+   * Meta Title field in *Forms*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: forms.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Forms*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: forms.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Forms*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: forms.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Forms document from Prismic
+ *
+ * - **API ID**: `forms`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FormsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<FormsDocumentData>, "forms", Lang>;
+
 type HomepageDocumentDataSlicesSlice = HeroSlice;
 
 type HomepageDocumentDataSlices1Slice = never;
@@ -83,6 +144,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | SingelTitleSlice
   | ContentIndexSlice
   | ExpirienceSlice
   | TechListSlice
@@ -400,6 +462,7 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | FormsDocument
   | HomepageDocument
   | PageDocument
   | ProjectViewDocument
@@ -828,6 +891,71 @@ export type ProprroSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *SingelTitle → Default → Primary*
+ */
+export interface SingelTitleSliceDefaultPrimary {
+  /**
+   * Title field in *SingelTitle → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: singel_title.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * email field in *SingelTitle → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: singel_title.default.primary.email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * infoText field in *SingelTitle → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: singel_title.default.primary.infotext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  infotext: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for SingelTitle Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SingelTitleSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SingelTitleSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SingelTitle*
+ */
+type SingelTitleSliceVariation = SingelTitleSliceDefault;
+
+/**
+ * SingelTitle Shared Slice
+ *
+ * - **API ID**: `singel_title`
+ * - **Description**: SingelTitle
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SingelTitleSlice = prismic.SharedSlice<
+  "singel_title",
+  SingelTitleSliceVariation
+>;
+
+/**
  * Primary content in *TechList → Default → Primary*
  */
 export interface TechListSliceDefaultPrimary {
@@ -952,6 +1080,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      FormsDocument,
+      FormsDocumentData,
+      FormsDocumentDataSlicesSlice,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
@@ -991,6 +1122,10 @@ declare module "@prismicio/client" {
       ProprroSliceDefaultPrimary,
       ProprroSliceVariation,
       ProprroSliceDefault,
+      SingelTitleSlice,
+      SingelTitleSliceDefaultPrimary,
+      SingelTitleSliceVariation,
+      SingelTitleSliceDefault,
       TechListSlice,
       TechListSliceDefaultPrimary,
       TechListSliceDefaultItem,

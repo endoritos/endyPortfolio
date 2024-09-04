@@ -1,0 +1,30 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Excepteur cillum ut consectetur et. Eiusmod officia excepteur amet officia velit adipisicing deserunt."
+						}
+					}
+				]
+			},
+			"email": {
+				"__TYPE__": "FieldContent",
+				"value": "youth",
+				"type": "Text"
+			},
+			"infotext": {
+				"__TYPE__": "FieldContent",
+				"value": "anyway",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

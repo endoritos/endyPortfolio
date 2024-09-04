@@ -1,39 +1,14 @@
 {
   "format": "page",
-  "id": "page",
-  "label": "Page",
-  "repeatable": true,
-  "status": true,
+  "id": "forms",
   "json": {
     "Main": {
-      "uid": {
-        "config": {
-          "label": "UID"
-        },
-        "type": "UID"
-      },
       "slices": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
         "config": {
-          "choices": {
-            "singel_title": {
-              "type": "SharedSlice"
-            },
-            "content_index": {
-              "type": "SharedSlice"
-            },
-            "expirience": {
-              "type": "SharedSlice"
-            },
-            "tech_list": {
-              "type": "SharedSlice"
-            },
-            "biography": {
-              "type": "SharedSlice"
-            }
-          }
-        }
+          "choices": {}
+        },
+        "fieldset": "Slice Zone",
+        "type": "Slices"
       }
     },
     "SEO & Metadata": {
@@ -63,5 +38,8 @@
         "type": "Image"
       }
     }
-  }
+  },
+  "label": "Forms",
+  "repeatable": false,
+  "status": true
 }
