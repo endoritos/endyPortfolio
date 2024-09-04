@@ -1,4 +1,5 @@
 "use client";
+
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Swal from "sweetalert2";
@@ -12,45 +13,65 @@ export type SingelTitleProps = SliceComponentProps<Content.SingelTitleSlice>;
  * Component for "SingelTitle" Slices.
  */
 const SingelTitle = ({ slice }: SingelTitleProps): JSX.Element => {
-  const onSubmit = async (event) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
 
-    formData.append("access_key", "74f26471-7c81-4349-aff1-533107acfeb2");
+    // Check if the form is valid
+    const form = event.currentTarget;
+    if (!form.checkValidity()) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill in all required fields.",
+      });
+      return;
+    }
+
+    const formData = new FormData(form);
+
+    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
 
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
 
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: json,
-    }).then((res) => res.json());
-
-    if (res.success) {
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Your message has been sent!",
-        showConfirmButton: false,
-        timer: 1500,
-        showClass: {
-          popup: `
-            animate__animated
-            animate__fadeInUp
-            animate__faster
-          `
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-      });
-    } else {
+        body: json,
+      }).then((res) => res.json());
+
+      if (res.success) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your message has been sent!",
+          showConfirmButton: false,
+          timer: 1500,
+          showClass: {
+            popup: `
+              animate__animated
+              animate__fadeInUp
+              animate__faster
+            `,
+          },
+        });
+        form.reset(); // Clear the form after successful submission
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong! Please try again later.",
+        });
+      }
+    } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Something went wrong!",
-        footer: '<a href="#">Why do I have this issue?</a>'
+        text: "There was a problem submitting the form. Please try again later.",
       });
     }
   };
@@ -61,14 +82,13 @@ const SingelTitle = ({ slice }: SingelTitleProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <div className="mt-44"></div>
-
       <div className="grid sm:grid-cols-2 items-start gap-16 p-4 mx-auto max-w-4xl border-l-4 border-l-indigo-800 bg-indigo-800 bg-opacity-20 font-[sans-serif]">
         <div>
           <h1 className="text-black text-3xl font-extrabold">
             <PrismicRichText field={slice.primary.title} />
           </h1>
           <p className="text-sm text-gray-500 mt-4">
-            {slice.primary.infotext}
+            <>{slice.primary.infotext}</>
           </p>
           <div className="mt-12">
             <h2 className="text-black text-base font-bold">Email</h2>
@@ -88,9 +108,11 @@ const SingelTitle = ({ slice }: SingelTitleProps): JSX.Element => {
                     />
                   </svg>
                 </div>
-                <a href="mailto:YOUR_EMAIL_HERE" className="text-[#007bff] text-sm ml-4">
+                <a href="javascript:void(0)" className="text-[#007bff] text-sm ml-4">
                   <small className="block">Mail</small>
-                  <strong>{slice.primary.email}</strong>
+                  <strong>
+                    <>{slice.primary.email}</>
+                  </strong>
                 </a>
               </li>
             </ul>
@@ -100,27 +122,31 @@ const SingelTitle = ({ slice }: SingelTitleProps): JSX.Element => {
         <form onSubmit={onSubmit} className="ml-auto space-y-4">
           <input
             type="text"
-            placeholder="Name"
             name="name"
-            className="w-full rounded-md py-3 px-4 bg-gray-100 text-black text-sm outline-blue-500 focus:bg-slate-500" 
+            placeholder="Name"
+            className="w-full rounded-md py-3 px-4 bg-gray-100 text-black text-sm outline-blue-500 focus:bg-slate-500"
+            required
           />
           <input
             type="email"
-            placeholder="Email"
             name="email"
+            placeholder="Email"
             className="w-full rounded-md py-3 px-4 bg-gray-100 text-black text-sm outline-blue-500 focus:bg-slate-500"
+            required
           />
           <input
             type="text"
-            placeholder="Subject"
             name="subject"
+            placeholder="Subject"
             className="w-full rounded-md py-3 px-4 bg-gray-100 text-black text-sm outline-blue-500 focus:bg-slate-500"
+            required
           />
           <textarea
-            placeholder="Message"
             name="message"
+            placeholder="Message"
             rows="6"
             className="w-full rounded-md px-4 bg-gray-100 text-black text-sm pt-3 outline-blue-500 focus:bg-slate-500"
+            required
           ></textarea>
           <button
             type="submit"
