@@ -144,7 +144,7 @@ const SingelTitle = ({ slice }: SingelTitleProps): JSX.Element => {
           <textarea
             name="message"
             placeholder="Message"
-            rows="6"
+            rows= {6}
             className="w-full rounded-md px-4 bg-gray-100 text-black text-sm pt-3 outline-blue-500 focus:bg-slate-500"
             required
           ></textarea>
