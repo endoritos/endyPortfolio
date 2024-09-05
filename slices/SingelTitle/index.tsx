@@ -3,6 +3,7 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Swal from "sweetalert2";
+import { accessKey } from "./sush";
 
 /**
  * Props for `SingelTitle`.
@@ -28,8 +29,8 @@ const SingelTitle = ({ slice }: SingelTitleProps): JSX.Element => {
     }
 
     const formData = new FormData(form);
-
-    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
+    
+    formData.append("access_key", accessKey);
 
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
@@ -82,19 +83,19 @@ const SingelTitle = ({ slice }: SingelTitleProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <div className="mt-44"></div>
-      <div className="grid sm:grid-cols-2 items-start gap-16 p-4 mx-auto max-w-4xl border-l-4 border-l-indigo-800 bg-indigo-800 bg-opacity-20 font-[sans-serif]">
+      <div className="mx-auto grid max-w-4xl items-start gap-16 border-l-4 border-l-indigo-800 bg-indigo-800 bg-opacity-20 p-4 font-[sans-serif] sm:grid-cols-2">
         <div>
-          <h1 className="text-black text-3xl font-extrabold">
+          <h1 className="text-3xl font-extrabold text-black">
             <PrismicRichText field={slice.primary.title} />
           </h1>
-          <p className="text-sm text-gray-500 mt-4">
+          <p className="mt-4 text-sm text-gray-500">
             <>{slice.primary.infotext}</>
           </p>
           <div className="mt-12">
-            <h2 className="text-black text-base font-bold">Email</h2>
+            <h2 className="text-base font-bold text-black">Email</h2>
             <ul className="mt-4">
               <li className="flex items-center">
-                <div className="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#e6e6e6cf]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20px"
@@ -108,7 +109,10 @@ const SingelTitle = ({ slice }: SingelTitleProps): JSX.Element => {
                     />
                   </svg>
                 </div>
-                <a href="javascript:void(0)" className="text-[#007bff] text-sm ml-4">
+                <a
+                  href="javascript:void(0)"
+                  className="ml-4 text-sm text-[#007bff]"
+                >
                   <small className="block">Mail</small>
                   <strong>
                     <>{slice.primary.email}</>
@@ -124,33 +128,33 @@ const SingelTitle = ({ slice }: SingelTitleProps): JSX.Element => {
             type="text"
             name="name"
             placeholder="Name"
-            className="w-full rounded-md py-3 px-4 bg-gray-100 text-black text-sm outline-blue-500 focus:bg-slate-500"
+            className="w-full rounded-md bg-gray-100 px-4 py-3 text-sm text-black outline-blue-500 focus:bg-slate-500"
             required
           />
           <input
             type="email"
             name="email"
             placeholder="Email"
-            className="w-full rounded-md py-3 px-4 bg-gray-100 text-black text-sm outline-blue-500 focus:bg-slate-500"
+            className="w-full rounded-md bg-gray-100 px-4 py-3 text-sm text-black outline-blue-500 focus:bg-slate-500"
             required
           />
           <input
             type="text"
             name="subject"
             placeholder="Subject"
-            className="w-full rounded-md py-3 px-4 bg-gray-100 text-black text-sm outline-blue-500 focus:bg-slate-500"
+            className="w-full rounded-md bg-gray-100 px-4 py-3 text-sm text-black outline-blue-500 focus:bg-slate-500"
             required
           />
           <textarea
             name="message"
             placeholder="Message"
-            rows= {6}
-            className="w-full rounded-md px-4 bg-gray-100 text-black text-sm pt-3 outline-blue-500 focus:bg-slate-500"
+            rows={6}
+            className="w-full rounded-md bg-gray-100 px-4 pt-3 text-sm text-black outline-blue-500 focus:bg-slate-500"
             required
           ></textarea>
           <button
             type="submit"
-            className="text-white bg-blue-500 hover:bg-blue-600 tracking-wide rounded-md text-sm px-4 py-3 w-full !mt-6"
+            className="!mt-6 w-full rounded-md bg-blue-500 px-4 py-3 text-sm tracking-wide text-white hover:bg-blue-600"
           >
             Send
           </button>
