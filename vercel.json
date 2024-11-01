@@ -2,5 +2,14 @@
     "crons": [{
       "path": "/api/cron",
       "schedule": "0 10 * * *"
-    }]
+    }],
+
+    "headers": [
+    {
+      "source": "/public/911-transformed.glb",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
   }
